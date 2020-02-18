@@ -52,11 +52,21 @@ public class UserValidatorTest {
 
     @Test
     public void givenPassword_WhenMinimumEightCharacter_ShouldReturnTrue() {
-        Assert.assertTrue(UserValidator.validatePassword("password"));
+        Assert.assertTrue(UserValidator.validatePassword("passwordA"));
     }
 
     @Test
     public void givenPassword_WhenLessThanEightCharacter_ShouldReturnFalse() {
         Assert.assertFalse(UserValidator.validatePassword("passwor"));
+    }
+
+    @Test
+    public void givenPassword_WhenUpperCaseNotPresent_ShouldReturnFalse() {
+        Assert.assertFalse(UserValidator.validatePassword("password"));
+    }
+
+    @Test
+    public void givenPassword_WhenAtLeastUppercaseWithDidgit_ShouldReturnFalse() {
+        Assert.assertFalse(UserValidator.validatePassword("Password123"));
     }
 }
