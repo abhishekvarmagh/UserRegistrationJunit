@@ -66,7 +66,22 @@ public class UserValidatorTest {
     }
 
     @Test
-    public void givenPassword_WhenAtLeastUppercaseWithDidgit_ShouldReturnFalse() {
+    public void givenPassword_ContainAtLeastUppercaseWithDigit_ShouldReturnFalse() {
         Assert.assertFalse(UserValidator.validatePassword("Password123"));
+    }
+
+    @Test
+    public void givenPassword_ContainAtLeastOneNumber_ShouldReturnTrue() {
+        Assert.assertTrue(UserValidator.validatePasswordRuleThree("Password123"));
+    }
+
+    @Test
+    public void givenPassword_WhenDoesNotContainNumber_ShouldReturnFalse() {
+        Assert.assertFalse(UserValidator.validatePasswordRuleThree("Password"));
+    }
+
+    @Test
+    public void givenPassword_WhenContainSpecialCharacter_ShouldReturnFalse() {
+        Assert.assertFalse(UserValidator.validatePasswordRuleThree("Password123@"));
     }
 }
