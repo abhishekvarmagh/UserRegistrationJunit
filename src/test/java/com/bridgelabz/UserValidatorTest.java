@@ -24,4 +24,14 @@ public class UserValidatorTest {
     public void givenLastName_WhenShort_ShouldReturnFalse() {
         Assert.assertFalse(UserValidator.validateName("Va"));
     }
+
+    @Test
+    public void givenEmailId_WhenProper_ShouldReturnTrue() {
+        Assert.assertTrue(UserValidator.validateEmail("abc.xyz@bl.co.in"));
+    }
+
+    @Test
+    public void givenEmailId_WhenNotInProperFormat_ShouldReturnFalse() {
+        Assert.assertFalse(UserValidator.validateEmail("abc.@gmail.com"));
+    }
 }
