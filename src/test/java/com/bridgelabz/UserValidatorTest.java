@@ -34,4 +34,19 @@ public class UserValidatorTest {
     public void givenEmailId_WhenNotInProperFormat_ShouldReturnFalse() {
         Assert.assertFalse(UserValidator.validateEmail("abc.@gmail.com"));
     }
+
+    @Test
+    public void givenMobileNumber_WhenProperFormat_ShouldReturnTrue() {
+        Assert.assertTrue(UserValidator.validateMobileNumber("91 1234567890"));
+    }
+
+    @Test
+    public void givenMobileNumber_WhenInvalidCountryCode_ShouldReturnFalse() {
+        Assert.assertFalse(UserValidator.validateMobileNumber("09 1234567890"));
+    }
+
+    @Test
+    public void givenMobileNumber_WhenImproperFormat_ShouldReturnTrue() {
+        Assert.assertFalse(UserValidator.validateMobileNumber("9112345678901"));
+    }
 }
