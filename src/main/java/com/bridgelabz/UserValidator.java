@@ -9,6 +9,7 @@ public class UserValidator {
     public static String mobileNumberPattern = "^[1-9]{1}[0-9]{1,2}[ ][1-9]{1}[0-9]{9}$";
     public static String passwordUppercasePattern = "^(?=.*[A-Z])[A-Za-z]{8,}$";
     public static String passwordContainNumberPattern = "^(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9]{8,}$";
+    public static String passwordAlsoHasExactlyOneCharacter = "^(?=.?[A-Z])(?=[^@|#|$|%|&]*[@|#|$|%|&][^@|#|$|%|&]*$)(?=.*[0-9])[A-Za-z0-9@#$%^&]{8,}$";
 
     public static boolean validateName(String name) {
         if (Pattern.matches(namePattern, name)) {
@@ -44,6 +45,14 @@ public class UserValidator {
 
     public static boolean validatePasswordRuleThree(String password) {
         if (Pattern.matches(passwordContainNumberPattern, password)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean validatePasswordHasExactlyOneSpecialCharacter(String password) {
+        if (Pattern.matches(passwordAlsoHasExactlyOneCharacter, password)) {
             return true;
         } else {
             return false;
