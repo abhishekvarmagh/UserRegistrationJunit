@@ -14,4 +14,14 @@ public class UserValidatorTest {
     public void givenFirstName_WhenShort_ShouldReturnFalse() {
         Assert.assertFalse(UserValidator.validateName("Ab"));
     }
+
+    @Test
+    public void givenLastName_WhenProper_ShouldReturnTrue() {
+        Assert.assertTrue(UserValidator.validateName("Varma"));
+    }
+
+    @Test
+    public void givenLastName_WhenShort_ShouldReturnFalse() {
+        Assert.assertFalse(UserValidator.validateName("Va"));
+    }
 }
