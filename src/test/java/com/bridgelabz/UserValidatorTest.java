@@ -6,7 +6,7 @@ import org.junit.Test;
 public class UserValidatorTest {
 
     @Test
-    public void givenFirstName_WhenProper_ShouldReturnTrue(){
+    public void givenFirstName_WhenProper_ShouldReturnTrue() {
         Assert.assertTrue(UserValidator.validateName("Abh"));
     }
 
@@ -48,5 +48,15 @@ public class UserValidatorTest {
     @Test
     public void givenMobileNumber_WhenImproperFormat_ShouldReturnTrue() {
         Assert.assertFalse(UserValidator.validateMobileNumber("9112345678901"));
+    }
+
+    @Test
+    public void givenPassword_WhenMinimumEightCharacter_ShouldReturnTrue() {
+        Assert.assertTrue(UserValidator.validatePassword("password"));
+    }
+
+    @Test
+    public void givenPassword_WhenLessThanEightCharacter_ShouldReturnFalse() {
+        Assert.assertFalse(UserValidator.validatePassword("passwor"));
     }
 }
